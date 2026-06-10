@@ -1,0 +1,289 @@
+/* ========================= BASE ========================= */
+.home {
+  font-family: Arial, sans-serif;
+  color: #2f3e2f;
+  overflow-x: hidden;
+}
+
+/* ========================= NAVBAR ========================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 50px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 100px;
+  width: 250px;
+}
+
+.nav-links a {
+  margin-left: 22px;
+  text-decoration: none;
+  color: #4a5d4a;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #5c8d6a;
+}
+
+.login-btn {
+  font-weight: 600;
+}
+
+/* ========================= HERO ========================= */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 90px 110px; /* unchanged */
+  gap: 60px;
+  background: linear-gradient(to right, #eef5f0, #f9fbf9);
+}
+
+.hero-text {
+  max-width: 540px;
+}
+
+.hero h1 {
+  font-size: 44px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  font-size: 16px;
+  color: #556b55;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  margin-top: 28px;
+  display: flex;
+  gap: 16px;
+}
+
+/* HERO IMAGE */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 22px;
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.18);
+}
+
+/* ========================= BUTTONS ========================= */
+.btn-primary {
+  background: #5c8d6a;
+  color: white;
+  padding: 13px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #4f7c5c;
+}
+
+.btn-secondary {
+  padding: 13px 28px;
+  border: 1px solid #5c8d6a;
+  background: transparent;
+  border-radius: 8px;
+  color: #5c8d6a;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  background: #5c8d6a;
+  color: white;
+}
+
+/* ========================= HOW IT WORKS ========================= */
+.how {
+  text-align: center;
+  padding: 45px 20px; /* reduced from 90 */
+}
+
+.how h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.how p {
+  color: #6b7a6b;
+}
+
+/* ========================= CARD GRID ========================= */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+  max-width: 1050px;
+  margin: 30px auto; /* reduced from 45 */
+}
+
+/* ========================= STEP + TRUST CARDS ========================= */
+.step-card,
+.trust-card {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+  text-align: center;
+}
+
+.step-card:hover,
+.trust-card:hover {
+  transform: translateY(-6px);
+}
+
+.step-card span {
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  background: #5c8d6a;
+  color: white;
+  border-radius: 50%;
+  line-height: 38px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* ========================= TRUST SECTION ========================= */
+.trust {
+  padding: 45px 20px; /* reduced from 90 */
+  background: #f5f7f5;
+  text-align: center;
+}
+
+.trust h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.trust-img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 18px;
+}
+
+/* ========================= REVIEWS ========================= */
+.reviews {
+  padding: 40px 20px; /* reduced from 90 */
+}
+
+.reviews h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 26px;
+}
+
+.review-subtitle {
+  text-align: center;
+  font-size: 22px;
+  margin: 18px 0 14px; /* reduced */
+  color: #4a5d4a;
+}
+
+/* REVIEW GRID */
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px; /* reduced */
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* REVIEW CARD */
+.review-card {
+  background: #ffffff;
+  padding: 26px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+  text-align: center;
+}
+
+.review-card:hover {
+  transform: translateY(-6px);
+}
+
+.review-card p {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+/* REVIEW AVATAR */
+.review-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin: 0 auto 14px;
+  object-fit: cover;
+}
+
+/* ========================= CTA ========================= */
+.cta {
+  padding: 45px 20px; /* reduced from 90 */
+  text-align: center;
+  background: #5c8d6a;
+  color: white;
+}
+
+.cta h2 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.cta p {
+  margin-bottom: 24px;
+  opacity: 0.9;
+}
+
+/* ========================= FOOTER ========================= */
+.footer {
+  padding: 22px;
+  text-align: center;
+  background: #2f3e2f;
+  color: #cfd8cf;
+  font-size: 14px;
+}
+
+/* ========================= RESPONSIVE ========================= */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 70px 30px;
+  }
+
+  .hero-image {
+    margin-top: 40px;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

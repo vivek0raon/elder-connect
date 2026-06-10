@@ -1,0 +1,11 @@
+{
+  "name": "eldercare-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm install --prefix eldercare-backend && npm install --prefix eldercare-frontend && npm run build --prefix eldercare-frontend",
+    "start": "npm run start --prefix eldercare-backend",
+    "dev": "npm run dev --prefix eldercare-backend",
+    "serve": "npm run build && npm run start"
+  }
+}
