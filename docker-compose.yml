@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./eldercare-backend/.env
+    environment:
+      - NODE_ENV=production
+      - PORT=8000
+      - MONGODB_URI=${MONGODB_URI}
+      - CLIENT_URL=${CLIENT_URL:-http://localhost:8000}
+    restart: always
