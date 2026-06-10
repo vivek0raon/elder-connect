@@ -27,7 +27,7 @@ const BookService = () => {
     const fetchCaretakers = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8000/api/users/caretakers"
+          "/api/users/caretakers"
         );
         setCaretakers(res.data);
       } catch (err) {
@@ -68,7 +68,7 @@ const BookService = () => {
         return;
       }
 
-      await axios.post("http://localhost:8000/api/bookings/create", {
+      await axios.post("/api/bookings/create", {
         ...form,
         childId: user._id
       });

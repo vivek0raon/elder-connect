@@ -19,7 +19,7 @@ function CaretakerDashboard() {
 
       try {
         const res = await fetch(
-          `http://localhost:8000/api/bookings/caretaker/${data._id}`
+          `/api/bookings/caretaker/${data._id}`
         );
 
         const bookingData = await res.json();
@@ -39,7 +39,7 @@ function CaretakerDashboard() {
   try {
 
     const res = await fetch(
-      `http://localhost:8000/api/bookings/${id}`,
+      `/api/bookings/${id}`,
       {
         method: "PUT",
 

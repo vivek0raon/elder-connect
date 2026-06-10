@@ -25,7 +25,7 @@ const Complaints = () => {
     const fetchCaretakers = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8000/api/users/caretakers"
+          "/api/users/caretakers"
         );
         setCaretakers(res.data);
       } catch (err) {
@@ -53,7 +53,7 @@ const Complaints = () => {
         return;
       }
 
-      await axios.post("http://localhost:8000/api/complaints/create", {
+      await axios.post("/api/complaints/create", {
         ...form,
         userId: user._id
       });

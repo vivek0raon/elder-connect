@@ -29,7 +29,7 @@ const ChildDashboard = () => {
 
       /* DASHBOARD DATA */
       const res = await axios.get(
-        `http://localhost:8000/api/dashboard/child/${user._id}`
+        `/api/dashboard/child/${user._id}`
       );
 
       setStats(res.data.stats || {});
@@ -39,7 +39,7 @@ const ChildDashboard = () => {
 
       /* CARETAKERS */
       const caretakersRes = await axios.get(
-        "http://localhost:8000/api/users/caretakers"
+        "/api/users/caretakers"
       );
 
       setCaretakers(caretakersRes.data || []);
@@ -59,7 +59,7 @@ const ChildDashboard = () => {
     try {
       const user = JSON.parse(localStorage.getItem("user"));
 
-      await axios.post("http://localhost:8000/api/bookings/create", {
+      await axios.post("/api/bookings/create", {
         childId: user._id,
         caretakerId: caretaker._id,   // ✅ important
         service: "General Care",

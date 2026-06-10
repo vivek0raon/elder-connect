@@ -20,7 +20,7 @@ const CompleteProfile = () => {
   const submitProfile = async () => {
     try {
       const res = await axios.put(
-        `http://localhost:8000/api/auth/complete-profile/${user._id}`,
+        `/api/auth/complete-profile/${user._id}`,
         form
       );
 

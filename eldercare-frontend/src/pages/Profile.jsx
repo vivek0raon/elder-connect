@@ -25,7 +25,7 @@ const Profile = () => {
   const handleUpdate = async () => {
     try {
       const res = await axios.put(
-        `http://localhost:8000/api/users/${user._id}`,
+        `/api/users/${user._id}`,
         user
       );
 
