@@ -8,6 +8,12 @@ const ChildDashboard = () => {
 
   const navigate = useNavigate();
 
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   /* ================= STATE ================= */
   const [stats, setStats] = useState({
     bookings: 0,
@@ -96,7 +102,15 @@ const ChildDashboard = () => {
       {/* ================= MAIN ================= */}
       <div className={dashboardStyles.main}>
 
-        <h1 className={dashboardStyles.pageTitle}>Dashboard</h1>
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+          <h1 className={dashboardStyles.pageTitle}>Dashboard</h1>
+          <button
+            className={dashboardStyles.dangerButton}
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        </div>
 
         <div className={dashboardStyles.content}>
 

@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { dashboardStyles } from "../styles";
 
 function CaretakerDashboard() {
+  const navigate = useNavigate();
   const [caretaker, setCaretaker] = useState(null);
   const [activeMenu, setActiveMenu] = useState("dashboard");
   const [bookings, setBookings] = useState([]);
   const navClass = (menu) =>
     activeMenu === menu ? dashboardStyles.activeNavItem : dashboardStyles.navItem;
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   // ================= FETCH DATA =================
   useEffect(() => {
@@ -165,9 +173,17 @@ function CaretakerDashboard() {
       {/* ================= MAIN ================= */}
       <div className={dashboardStyles.main}>
 
-        <h1 className={dashboardStyles.pageTitle}>
-          Welcome, {caretaker.name} 
-        </h1>
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+          <h1 className={dashboardStyles.pageTitle}>
+            Welcome, {caretaker.name}
+          </h1>
+          <button
+            className={dashboardStyles.dangerButton}
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        </div>
 
         {/* ================= PROFILE ================= */}
         {activeMenu === "profile" && (
