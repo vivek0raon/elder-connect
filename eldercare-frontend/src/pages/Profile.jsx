@@ -1,7 +1,7 @@
-import "./dashboard.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { dashboardStyles } from "../styles";
 
 const Profile = () => {
 
@@ -39,35 +39,35 @@ const Profile = () => {
   };
 
   return (
-    <div className="dashboard-layout">
+    <div className={dashboardStyles.layout}>
 
       {/* SIDEBAR */}
-      <div className="sidebar">
-        <h2 className="brand">Nest Life:CURA</h2>
+      <div className={dashboardStyles.sidebar}>
+        <h2 className={dashboardStyles.brand}>Nest Life:CURA</h2>
 
-        <ul>
-          <li onClick={() => navigate("/child-dashboard")}>Dashboard</li>
-          <li onClick={() => navigate("/book-service")}>Book Service</li>
+        <ul className={dashboardStyles.navList}>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/child-dashboard")}>Dashboard</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/book-service")}>Book Service</li>
           {/* <li>Search Caretakers</li> */}
-          <li onClick={() => navigate("/complaints")}>Complaints</li>
-          <li onClick={() => navigate("/emergency")}>Emergency</li>
-          <li className="active">Profile</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/complaints")}>Complaints</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/emergency")}>Emergency</li>
+          <li className={dashboardStyles.activeNavItem}>Profile</li>
         </ul>
       </div>
 
       {/* MAIN */}
-      <div className="dashboard-main">
+      <div className={dashboardStyles.main}>
 
-        <h1>Profile</h1>
+        <h1 className={dashboardStyles.pageTitle}>Profile</h1>
 
-        <div className="dashboard-grid">
+        <div className={dashboardStyles.grid}>
 
           {/* LEFT COLUMN */}
-          <div className="dashboard-left">
+          <div className={dashboardStyles.left}>
 
             {/* BASIC DETAILS */}
-            <div className="card-box">
-              <h3>Basic Details</h3>
+            <div className={dashboardStyles.card}>
+              <h3 className={dashboardStyles.cardTitle}>Basic Details</h3>
 
               <input
                 name="name"
@@ -75,14 +75,14 @@ const Profile = () => {
                 value={user.name || ""}
                 onChange={handleChange}
                 disabled={!editMode}
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
               <input
                 name="email"
                 value={user.email || ""}
                 disabled
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
               <input
@@ -91,7 +91,7 @@ const Profile = () => {
                 value={user.phone || ""}
                 onChange={handleChange}
                 disabled={!editMode}
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
               <input
@@ -100,13 +100,13 @@ const Profile = () => {
                 value={user.job || ""}
                 onChange={handleChange}
                 disabled={!editMode}
-                className="profile-input"
+                className={dashboardStyles.input}
               />
             </div>
 
             {/* ADDRESS */}
-            <div className="card-box">
-              <h3>Address Details</h3>
+            <div className={dashboardStyles.card}>
+              <h3 className={dashboardStyles.cardTitle}>Address Details</h3>
 
               <input
                 name="address"
@@ -114,7 +114,7 @@ const Profile = () => {
                 value={user.address || ""}
                 onChange={handleChange}
                 disabled={!editMode}
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
               <input
@@ -123,7 +123,7 @@ const Profile = () => {
                 value={user.parentAddress || ""}
                 onChange={handleChange}
                 disabled={!editMode}
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
               <input
@@ -132,18 +132,18 @@ const Profile = () => {
                 value={user.city || ""}
                 onChange={handleChange}
                 disabled={!editMode}
-                className="profile-input"
+                className={dashboardStyles.input}
               />
             </div>
 
           </div>
 
           {/* RIGHT COLUMN */}
-          <div className="dashboard-right">
+          <div className={dashboardStyles.right}>
 
             {/* EXTRA INFO */}
-            <div className="card-box">
-              <h3>Additional Info</h3>
+            <div className={dashboardStyles.card}>
+              <h3 className={dashboardStyles.cardTitle}>Additional Info</h3>
 
               <input
                 name="emergencyContact"
@@ -151,7 +151,7 @@ const Profile = () => {
                 value={user.emergencyContact || ""}
                 onChange={handleChange}
                 disabled={!editMode}
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
               <textarea
@@ -160,21 +160,21 @@ const Profile = () => {
                 value={user.notes || ""}
                 onChange={handleChange}
                 disabled={!editMode}
-                className="profile-input"
+                className={dashboardStyles.input}
               />
             </div>
 
             {/* ACTIONS */}
-            <div className="card-box">
-              <h3>Actions</h3>
+            <div className={dashboardStyles.card}>
+              <h3 className={dashboardStyles.cardTitle}>Actions</h3>
 
               {editMode ? (
                 <>
-                  <button className="btn-save" onClick={handleUpdate}>
+                  <button className={dashboardStyles.saveButton} onClick={handleUpdate}>
                     Save
                   </button>
                   <button
-                    className="btn-cancel"
+                    className={dashboardStyles.cancelButton}
                     onClick={() => setEditMode(false)}
                   >
                     Cancel
@@ -182,7 +182,7 @@ const Profile = () => {
                 </>
               ) : (
                 <button
-                  className="btn-edit"
+                  className={dashboardStyles.editButton}
                   onClick={() => setEditMode(true)}
                 >
                   Edit Profile

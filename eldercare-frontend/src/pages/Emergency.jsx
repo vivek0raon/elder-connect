@@ -1,7 +1,7 @@
-import "./dashboard.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { dashboardStyles } from "../styles";
 
 const Emergency = () => {
 
@@ -76,41 +76,41 @@ const Emergency = () => {
   };
 
   return (
-    <div className="dashboard-layout">
+    <div className={dashboardStyles.layout}>
 
       {/* SIDEBAR */}
-      <div className="sidebar">
-        <h2 className="brand">Nest Life:CURA</h2>
+      <div className={dashboardStyles.sidebar}>
+        <h2 className={dashboardStyles.brand}>Nest Life:CURA</h2>
 
-        <ul>
-          <li onClick={() => navigate("/child-dashboard")}>Dashboard</li>
-          <li onClick={() => navigate("/book-service")}>Book Service</li>
-          <li onClick={() => navigate("/complaints")}>Complaints</li>
-          <li className="active">Emergency</li>
-          <li onClick={() => navigate("/profile")}>Profile</li>
+        <ul className={dashboardStyles.navList}>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/child-dashboard")}>Dashboard</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/book-service")}>Book Service</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/complaints")}>Complaints</li>
+          <li className={dashboardStyles.activeNavItem}>Emergency</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/profile")}>Profile</li>
         </ul>
       </div>
 
       {/* MAIN */}
-      <div className="dashboard-main">
+      <div className={dashboardStyles.main}>
 
-        <h1>Emergency</h1>
+        <h1 className={dashboardStyles.pageTitle}>Emergency</h1>
 
-        <div className="dashboard-grid">
+        <div className={dashboardStyles.grid}>
 
           {/* LEFT */}
-          <div className="dashboard-left">
+          <div className={dashboardStyles.left}>
 
-            <div className="card-box">
-              <h3>Emergency Details</h3>
+            <div className={dashboardStyles.card}>
+              <h3 className={dashboardStyles.cardTitle}>Emergency Details</h3>
 
               {/* TYPE */}
-              <label>Emergency Type</label>
+              <label className={dashboardStyles.label}>Emergency Type</label>
               <select
                 name="type"
                 value={form.type}
                 onChange={handleChange}
-                className="profile-input"
+                className={dashboardStyles.input}
               >
                 <option value="">Select</option>
                 <option value="medical">Medical</option>
@@ -120,12 +120,12 @@ const Emergency = () => {
               </select>
 
               {/* CARETAKER */}
-              <label>Select Caretaker (if related)</label>
+              <label className={dashboardStyles.label}>Select Caretaker (if related)</label>
               <select
                 name="caretakerId"
                 value={form.caretakerId}
                 onChange={handleChange}
-                className="profile-input"
+                className={dashboardStyles.input}
               >
                 <option value="">Optional</option>
                 {caretakers.map((c) => (
@@ -136,22 +136,22 @@ const Emergency = () => {
               </select>
 
               {/* LOCATION */}
-              <label>Location</label>
+              <label className={dashboardStyles.label}>Location</label>
               <input
                 name="location"
                 value={form.location}
                 onChange={handleChange}
                 placeholder="Enter current location"
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
               {/* URGENCY */}
-              <label>How urgent is the situation?</label>
+              <label className={dashboardStyles.label}>How urgent is the situation?</label>
               <select
                 name="urgency"
                 value={form.urgency}
                 onChange={handleChange}
-                className="profile-input"
+                className={dashboardStyles.input}
               >
                 <option value="">Select</option>
                 <option value="low">Not urgent</option>
@@ -160,29 +160,28 @@ const Emergency = () => {
               </select>
 
               {/* CONTACT */}
-              <label>Emergency Contact</label>
+              <label className={dashboardStyles.label}>Emergency Contact</label>
               <input
                 name="contact"
                 value={form.contact}
                 onChange={handleChange}
                 placeholder="Enter contact number"
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
               {/* MESSAGE */}
-              <label>Description</label>
+              <label className={dashboardStyles.label}>Description</label>
               <textarea
                 name="message"
                 value={form.message}
                 onChange={handleChange}
                 placeholder="Describe the emergency"
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
               <button
                 onClick={handleSubmit}
-                className="btn-save"
-                style={{ background: "#d9534f" }} // red button
+                className={dashboardStyles.dangerButton}
               >
                 Send Emergency Alert
               </button>
@@ -192,17 +191,17 @@ const Emergency = () => {
           </div>
 
           {/* RIGHT */}
-          <div className="dashboard-right">
+          <div className={dashboardStyles.right}>
 
-            <div className="card-box">
-              <h3>Instructions</h3>
+            <div className={dashboardStyles.card}>
+              <h3 className={dashboardStyles.cardTitle}>Instructions</h3>
               <p>Select correct emergency type.</p>
               <p>Provide exact location.</p>
               <p>Submit immediately in urgent cases.</p>
             </div>
 
-            <div className="card-box">
-              <h3>Urgency Guide</h3>
+            <div className={dashboardStyles.card}>
+              <h3 className={dashboardStyles.cardTitle}>Urgency Guide</h3>
               <p>Not urgent – Minor issue</p>
               <p>Need help soon – Attention needed</p>
               <p>Immediate help needed – Critical</p>

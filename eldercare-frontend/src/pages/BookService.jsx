@@ -1,8 +1,8 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./dashboard.css";
 import { useNavigate } from "react-router-dom";
+import { dashboardStyles } from "../styles";
 
 const BookService = () => {
 
@@ -84,41 +84,41 @@ const BookService = () => {
   };
 
   return (
-    <div className="dashboard-layout">
+    <div className={dashboardStyles.layout}>
 
       {/* SIDEBAR */}
-      <div className="sidebar">
-        <h2 className="brand">Nest Life:CURA</h2>
+      <div className={dashboardStyles.sidebar}>
+        <h2 className={dashboardStyles.brand}>Nest Life:CURA</h2>
 
-        <ul>
-          <li onClick={() => navigate("/child-dashboard")}>Dashboard</li>
-          <li className="active">Book Service</li>
-          <li onClick={() => navigate("/complaints")}>Complaints</li>
-          <li onClick={() => navigate("/emergency")}>Emergency</li>
-          <li onClick={() => navigate("/profile")}>Profile</li>
+        <ul className={dashboardStyles.navList}>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/child-dashboard")}>Dashboard</li>
+          <li className={dashboardStyles.activeNavItem}>Book Service</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/complaints")}>Complaints</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/emergency")}>Emergency</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/profile")}>Profile</li>
         </ul>
       </div>
 
       {/* MAIN */}
-      <div className="dashboard-main">
+      <div className={dashboardStyles.main}>
 
-        <h1>Book Caretaker</h1>
+        <h1 className={dashboardStyles.pageTitle}>Book Caretaker</h1>
 
-        <div className="dashboard-grid">
+        <div className={dashboardStyles.grid}>
 
           {/* LEFT */}
-          <div className="dashboard-left">
+          <div className={dashboardStyles.left}>
 
             {/* BOOKING FORM */}
-            <div className="card-box">
+            <div className={dashboardStyles.card}>
 
-              <h3>Booking Details</h3>
+              <h3 className={dashboardStyles.cardTitle}>Booking Details</h3>
 
-              <label>Select Caretaker</label>
+              <label className={dashboardStyles.label}>Select Caretaker</label>
               <select
                 name="caretakerId"
                 onChange={handleChange}
-                className="profile-input"
+                className={dashboardStyles.input}
               >
                 <option value="">Select</option>
 
@@ -129,32 +129,32 @@ const BookService = () => {
                 ))}
               </select>
 
-              <label>Service</label>
+              <label className={dashboardStyles.label}>Service</label>
               <input
                 name="service"
                 placeholder="Enter Service"
                 onChange={handleChange}
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
-              <label>From Date</label>
+              <label className={dashboardStyles.label}>From Date</label>
               <input
                 name="fromDate"
                 type="date"
                 onChange={handleChange}
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
-              <label>To Date</label>
+              <label className={dashboardStyles.label}>To Date</label>
               <input
                 name="toDate"
                 type="date"
                 min={form.fromDate}
                 onChange={handleChange}
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
-              <button onClick={handleSubmit} className="btn-save">
+              <button onClick={handleSubmit} className={dashboardStyles.saveButton}>
                 Confirm Booking
               </button>
 
@@ -162,14 +162,14 @@ const BookService = () => {
 
             {/* ✅ CARETAKER DETAILS PREVIEW */}
             {selectedCaretaker && (
-              <div className="card-box" style={{ marginTop: "0px" }}>
-                <h3>Selected Caretaker Details</h3>
+              <div className={dashboardStyles.card}>
+                <h3 className={dashboardStyles.cardTitle}>Selected Caretaker Details</h3>
 
-                <h3 style={{ margin: "0 0 6px 0" }}>
+                <h3 className="mb-1.5 mt-0 text-lg font-semibold">
                   {selectedCaretaker.name || "No Name"}
                 </h3>
 
-                <ul style={{ paddingLeft: "18px", margin: 0, fontSize: "17px" }}>
+                <ul className="m-0 pl-[18px] text-[17px]">
                   <li>Email: {selectedCaretaker.email || "N/A"}</li>
                   <li>Mobile: {selectedCaretaker.phone || "N/A"}</li>
                   <li>Aadhar: {selectedCaretaker.aadhar || "N/A"}</li>
@@ -185,17 +185,17 @@ const BookService = () => {
           </div>
 
           {/* RIGHT */}
-          <div className="dashboard-right">
+          <div className={dashboardStyles.right}>
 
-            <div className="card-box">
-              <h3>Instructions</h3>
+            <div className={dashboardStyles.card}>
+              <h3 className={dashboardStyles.cardTitle}>Instructions</h3>
               <p>Select a caretaker and service.</p>
               <p>Choose a preferred date range.</p>
               <p>Click confirm to book.</p>
             </div>
 
-            <div className="card-box">
-              <h3>Tips</h3>
+            <div className={dashboardStyles.card}>
+              <h3 className={dashboardStyles.cardTitle}>Tips</h3>
               <p>Choose verified caretakers</p>
               <p>Book in advance</p>
               <p>Check availability</p>

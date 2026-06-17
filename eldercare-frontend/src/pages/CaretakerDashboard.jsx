@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import "./dashboard.css";
+import { dashboardStyles } from "../styles";
 
 function CaretakerDashboard() {
   const [caretaker, setCaretaker] = useState(null);
   const [activeMenu, setActiveMenu] = useState("dashboard");
   const [bookings, setBookings] = useState([]);
+  const navClass = (menu) =>
+    activeMenu === menu ? dashboardStyles.activeNavItem : dashboardStyles.navItem;
 
   // ================= FETCH DATA =================
   useEffect(() => {
@@ -102,57 +104,57 @@ function CaretakerDashboard() {
   // ================= NO DATA =================
   if (!caretaker) {
     return (
-      <h2 style={{ textAlign: "center", marginTop: "50px" }}>
+      <h2 className="mt-[50px] text-center text-2xl font-semibold text-[#2f3e2f]">
         No Data Found ⚠️
       </h2>
     );
   }
 
   return (
-    <div className="dashboard-layout">
+    <div className={dashboardStyles.layout}>
 
       {/* ================= SIDEBAR ================= */}
-      <div className="sidebar">
-        <h2 className="brand">ElderCare Connect</h2>
+      <div className={dashboardStyles.sidebar}>
+        <h2 className={dashboardStyles.brand}>ElderCare Connect</h2>
 
-        <ul>
+        <ul className={dashboardStyles.navList}>
           <li
-            className={activeMenu === "dashboard" ? "active" : ""}
+            className={navClass("dashboard")}
             onClick={() => setActiveMenu("dashboard")}
           >
             Dashboard
           </li>
 
           <li
-            className={activeMenu === "profile" ? "active" : ""}
+            className={navClass("profile")}
             onClick={() => setActiveMenu("profile")}
           >
             Profile
           </li>
 
           <li
-            className={activeMenu === "bookings" ? "active" : ""}
+            className={navClass("bookings")}
             onClick={() => setActiveMenu("bookings")}
           >
             Bookings
           </li>
 
           <li
-            className={activeMenu === "ongoing" ? "active" : ""}
+            className={navClass("ongoing")}
             onClick={() => setActiveMenu("ongoing")}
           >
             Ongoing Work
           </li>
 
           <li
-            className={activeMenu === "previous" ? "active" : ""}
+            className={navClass("previous")}
             onClick={() => setActiveMenu("previous")}
           >
             Previous Work
           </li>
 
           <li
-            className={activeMenu === "earnings" ? "active" : ""}
+            className={navClass("earnings")}
             onClick={() => setActiveMenu("earnings")}
           >
             Earnings
@@ -161,17 +163,17 @@ function CaretakerDashboard() {
       </div>
 
       {/* ================= MAIN ================= */}
-      <div className="dashboard-main">
+      <div className={dashboardStyles.main}>
 
-        <h1>
+        <h1 className={dashboardStyles.pageTitle}>
           Welcome, {caretaker.name} 
         </h1>
 
         {/* ================= PROFILE ================= */}
         {activeMenu === "profile" && (
-          <div className="card-box">
+          <div className={dashboardStyles.card}>
 
-            <h2>Profile Details</h2>
+            <h2 className="text-2xl font-semibold text-[#2f3e2f]">Profile Details</h2>
 
             <br />
 
@@ -201,26 +203,26 @@ function CaretakerDashboard() {
         {/* ================= DASHBOARD ================= */}
         {activeMenu === "dashboard" && (
           <>
-            <div className="stats-row">
+            <div className={dashboardStyles.statsRow}>
 
-  <div className="stat-card">
-    <p>Total Bookings</p>
-    <h2>{bookings.length}</h2>
+  <div className={dashboardStyles.statCard}>
+    <p className={dashboardStyles.statLabel}>Total Bookings</p>
+    <h2 className={dashboardStyles.statValue}>{bookings.length}</h2>
   </div>
 
-  <div className="stat-card">
-    <p>Accepted Jobs</p>
-    <h2>{ongoingWork.length}</h2>
+  <div className={dashboardStyles.statCard}>
+    <p className={dashboardStyles.statLabel}>Accepted Jobs</p>
+    <h2 className={dashboardStyles.statValue}>{ongoingWork.length}</h2>
   </div>
 
-  <div className="stat-card">
-    <p>Completed Jobs</p>
-    <h2>{previousWork.length}</h2>
+  <div className={dashboardStyles.statCard}>
+    <p className={dashboardStyles.statLabel}>Completed Jobs</p>
+    <h2 className={dashboardStyles.statValue}>{previousWork.length}</h2>
   </div>
 
-  <div className="stat-card">
-    <p>Pending Requests</p>
-    <h2>
+  <div className={dashboardStyles.statCard}>
+    <p className={dashboardStyles.statLabel}>Pending Requests</p>
+    <h2 className={dashboardStyles.statValue}>
       {
         bookings.filter(
           (b) => b.status === "pending"
@@ -231,9 +233,9 @@ function CaretakerDashboard() {
 
 </div>
 
-            <div className="card-box">
+            <div className={dashboardStyles.card}>
 
-              <h3>Work Summary</h3>
+              <h3 className={dashboardStyles.cardTitle}>Work Summary</h3>
 
               <br />
 
@@ -251,9 +253,9 @@ function CaretakerDashboard() {
 
         {/* ================= BOOKINGS ================= */}
         {activeMenu === "bookings" && (
-          <div className="card-box">
+          <div className={dashboardStyles.card}>
 
-            <h2>Bookings</h2>
+            <h2 className="text-2xl font-semibold text-[#2f3e2f]">Bookings</h2>
 
             <br />
 
@@ -261,7 +263,7 @@ function CaretakerDashboard() {
               bookings.map((b) => (
                 <div
                   key={b._id}
-                  className="booking-card"
+                  className={dashboardStyles.bookingCard}
                 >
 
                   <p>
@@ -297,6 +299,7 @@ function CaretakerDashboard() {
                   {b.status === "pending" && (
                     <>
                       <button
+                        className={dashboardStyles.acceptSmall}
                         onClick={() =>
                           updateStatus(
                             b._id,
@@ -308,6 +311,7 @@ function CaretakerDashboard() {
                       </button>
 
                       <button
+                        className={dashboardStyles.rejectSmall}
                         onClick={() =>
                           updateStatus(
                             b._id,
@@ -323,6 +327,7 @@ function CaretakerDashboard() {
                   {/* ACCEPTED */}
                   {b.status === "accepted" && (
                     <button
+                      className={dashboardStyles.acceptSmall}
                       onClick={() =>
                         updateStatus(
                           b._id,
@@ -345,9 +350,9 @@ function CaretakerDashboard() {
 
         {/* ================= ONGOING ================= */}
         {activeMenu === "ongoing" && (
-          <div className="card-box">
+          <div className={dashboardStyles.card}>
 
-            <h2>Ongoing Work</h2>
+            <h2 className="text-2xl font-semibold text-[#2f3e2f]">Ongoing Work</h2>
 
             <br />
 
@@ -355,7 +360,7 @@ function CaretakerDashboard() {
               ongoingWork.map((b) => (
                 <div
                   key={b._id}
-                  className="booking-card"
+                  className={dashboardStyles.bookingCard}
                 >
                   <p>
                     <b>Service:</b> {b.service}
@@ -387,9 +392,9 @@ function CaretakerDashboard() {
 
         {/* ================= PREVIOUS ================= */}
         {activeMenu === "previous" && (
-          <div className="card-box">
+          <div className={dashboardStyles.card}>
 
-            <h2>Previous Work</h2>
+            <h2 className="text-2xl font-semibold text-[#2f3e2f]">Previous Work</h2>
 
             <br />
 
@@ -397,7 +402,7 @@ function CaretakerDashboard() {
               previousWork.map((b) => (
                 <div
                   key={b._id}
-                  className="booking-card"
+                  className={dashboardStyles.bookingCard}
                 >
                   <p>
                     <b>Service:</b> {b.service}
@@ -425,13 +430,13 @@ function CaretakerDashboard() {
 
         {/* ================= EARNINGS ================= */}
         {activeMenu === "earnings" && (
-          <div className="card-box">
+          <div className={dashboardStyles.card}>
 
-            <h2>Total Earnings</h2>
+            <h2 className="text-2xl font-semibold text-[#2f3e2f]">Total Earnings</h2>
 
             <br />
 
-            <h1>₹ {totalEarnings}</h1>
+            <h1 className="mt-5 text-4xl font-bold text-[#5c8d6a]">₹ {totalEarnings}</h1>
 
           </div>
         )}

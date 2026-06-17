@@ -1,7 +1,7 @@
-import "./auth.css";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { authStyles } from "../styles";
 
 const CompleteProfile = () => {
   const navigate = useNavigate();
@@ -44,12 +44,12 @@ const CompleteProfile = () => {
   };
 
   return (
-    <div className="auth-bg">
-      <div className="auth-glass">
+    <div className={authStyles.page}>
+      <div className={authStyles.panel}>
 
-        <div className="auth-right">
+        <div className={`${authStyles.right} mx-auto max-w-xl`}>
 
-          <h1>Complete Profile</h1>
+          <h1 className={authStyles.title}>Complete Profile</h1>
 
           {/* CARETAKER */}
           {user.role === "caretaker" ? (
@@ -57,34 +57,34 @@ const CompleteProfile = () => {
               <input
                 name="aadhar"
                 placeholder="Aadhar Number"
-                className="auth-input"
+                className={authStyles.input}
                 onChange={handleChange}
               />
 
               <input
                 name="phone"
                 placeholder="Phone Number"
-                className="auth-input"
+                className={authStyles.input}
                 onChange={handleChange}
               />
 
               <input
                 name="location"
                 placeholder="Location"
-                className="auth-input"
+                className={authStyles.input}
                 onChange={handleChange}
               />
 
               <input
                 name="pastWork"
                 placeholder="Past Work Experience"
-                className="auth-input"
+                className={authStyles.input}
                 onChange={handleChange}
               />
 
               <select
                 name="criminalRecord"
-                className="auth-input"
+                className={authStyles.input}
                 onChange={handleChange}
               >
                 <option value="">
@@ -105,56 +105,56 @@ const CompleteProfile = () => {
               <input
                 name="job"
                 placeholder="Job"
-                className="auth-input"
+                className={authStyles.input}
                 onChange={handleChange}
               />
 
               <input
                 name="address"
                 placeholder="Your Address"
-                className="auth-input"
+                className={authStyles.input}
                 onChange={handleChange}
               />
 
               <input
                 name="parentAddress"
                 placeholder="Parent Address"
-                className="auth-input"
+                className={authStyles.input}
                 onChange={handleChange}
               />
 
               <input
                 name="city"
                 placeholder="City"
-                className="auth-input"
+                className={authStyles.input}
                 onChange={handleChange}
               />
 
               <input
                 name="phone"
                 placeholder="Phone Number"
-                className="auth-input"
+                className={authStyles.input}
                 onChange={handleChange}
               />
 
               <input
                 name="emergencyContact"
                 placeholder="Emergency Contact"
-                className="auth-input"
+                className={authStyles.input}
                 onChange={handleChange}
               />
 
               <textarea
                 name="notes"
                 placeholder="Medical Notes / Special Needs"
-                className="auth-input"
+                className={authStyles.input}
                 onChange={handleChange}
               />
             </>
           )}
 
           <button
-            className="auth-button"
+            className={authStyles.button}
             onClick={submitProfile}
           >
             Save Profile

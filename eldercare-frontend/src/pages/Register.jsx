@@ -1,49 +1,8 @@
-// import "./auth.css";
-// import logo from "../assets/logo.png";
-// import { Link } from "react-router-dom";
-
-// const Register = () => {
-//   return (
-//     <div className="auth-bg">
-//       <div className="auth-glass">
-//         {/* LEFT */}
-//         <div className="auth-left">
-//           <img src={logo} alt="ElderCare Connect" />
-//           <h3>Connecting families with trusted elder care services.</h3>
-//         </div>
-
-//         {/* RIGHT */}
-//         <div className="auth-right">
-//           <h1>Create Your Account</h1>
-//           <p>Sign up to get started with ElderCare Connect</p>
-
-//           <input className="auth-input" placeholder="Full Name" />
-//           <input className="auth-input" placeholder="Email" />
-//           <input className="auth-input" type="password" placeholder="Password" />
-
-//           <select className="auth-input">
-//             <option>Select role</option>
-//             <option>Caretaker</option>
-//             <option>Family Member</option>
-//           </select>
-
-//           <button className="auth-button">Sign Up</button>
-
-//           <div className="auth-link">
-//             Already have an account? <Link to="/login"><span>Log In</span></Link>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Register;
-import "./auth.css";
 import logo from "../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { authStyles } from "../styles";
 
 const Register = () => {
 
@@ -87,36 +46,36 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-bg">
-      <div className="auth-glass">
+    <div className={authStyles.page}>
+      <div className={authStyles.panel}>
 
         {/* LEFT */}
-        <div className="auth-left">
-          <img src={logo} alt="ElderCare Connect" />
-          <h3>Connecting families with trusted elder care services.</h3>
+        <div className={authStyles.left}>
+          <img src={logo} alt="ElderCare Connect" className={authStyles.logo} />
+          <h3 className="text-2xl font-semibold leading-snug">Connecting families with trusted elder care services.</h3>
         </div>
 
         {/* RIGHT */}
-        <div className="auth-right">
-          <h1>Create Your Account</h1>
-          <p>Sign up to get started with ElderCare Connect</p>
+        <div className={authStyles.right}>
+          <h1 className={authStyles.title}>Create Your Account</h1>
+          <p className={authStyles.subtitle}>Sign up to get started with ElderCare Connect</p>
 
           <input
-            className="auth-input"
+            className={authStyles.input}
             placeholder="Full Name"
             name="name"
             onChange={handleChange}
           />
 
           <input
-            className="auth-input"
+            className={authStyles.input}
             placeholder="Email"
             name="email"
             onChange={handleChange}
           />
 
           <input
-            className="auth-input"
+            className={authStyles.input}
             type="password"
             placeholder="Password"
             name="password"
@@ -124,7 +83,7 @@ const Register = () => {
           />
 
           <select
-            className="auth-input"
+            className={authStyles.input}
             name="role"
             onChange={handleChange}
           >
@@ -133,13 +92,13 @@ const Register = () => {
             <option value="child">Family Member</option>
           </select>
 
-          <button className="auth-button" onClick={handleRegister}>
+          <button className={authStyles.button} onClick={handleRegister}>
             Sign Up
           </button>
 
-          <div className="auth-link">
+          <div className={authStyles.link}>
             Already have an account?{" "}
-            <Link to="/login"><span>Log In</span></Link>
+            <Link to="/login"><span className={authStyles.linkAccent}>Log In</span></Link>
           </div>
         </div>
       </div>

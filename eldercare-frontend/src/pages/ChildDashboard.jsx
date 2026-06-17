@@ -1,8 +1,8 @@
 
-import "./dashboard.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { dashboardStyles, statusClass } from "../styles";
 
 const ChildDashboard = () => {
 
@@ -77,71 +77,71 @@ const ChildDashboard = () => {
   };
 
   return (
-    <div className="dashboard-layout">
+    <div className={dashboardStyles.layout}>
 
       {/* ================= SIDEBAR ================= */}
-      <div className="sidebar">
-        <h2 className="brand">Nest Life:CURA</h2>
+      <div className={dashboardStyles.sidebar}>
+        <h2 className={dashboardStyles.brand}>Nest Life:CURA</h2>
 
-        <ul>
-          <li className="active">Dashboard</li>
-          <li onClick={() => navigate("/book-service")}>Book Service</li>
+        <ul className={dashboardStyles.navList}>
+          <li className={dashboardStyles.activeNavItem}>Dashboard</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/book-service")}>Book Service</li>
           {/* <li>Search Caretakers</li> */}
-          <li onClick={() => navigate("/complaints")}>Complaints</li>
-          <li onClick={() => navigate("/emergency")}>Emergency</li>
-          <li onClick={() => navigate("/profile")}>Profile</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/complaints")}>Complaints</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/emergency")}>Emergency</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/profile")}>Profile</li>
         </ul>
       </div>
 
       {/* ================= MAIN ================= */}
-      <div className="dashboard-main">
+      <div className={dashboardStyles.main}>
 
-        <h1>Dashboard</h1>
+        <h1 className={dashboardStyles.pageTitle}>Dashboard</h1>
 
-        <div className="dashboard-content">
+        <div className={dashboardStyles.content}>
 
           {/* ========= STATS ========= */}
-          <div className="stats-row">
+          <div className={dashboardStyles.statsRow}>
 
-            <div className="stat-card">
-              <p>Total Bookings</p>
-              <h2>{stats.bookings || 0}</h2>
+            <div className={dashboardStyles.statCard}>
+              <p className={dashboardStyles.statLabel}>Total Bookings</p>
+              <h2 className={dashboardStyles.statValue}>{stats.bookings || 0}</h2>
             </div>
 
-            <div className="stat-card">
-              <p>Active Caretakers</p>
-              <h2>{caretakers.length}</h2>
+            <div className={dashboardStyles.statCard}>
+              <p className={dashboardStyles.statLabel}>Active Caretakers</p>
+              <h2 className={dashboardStyles.statValue}>{caretakers.length}</h2>
             </div>
 
-            <div className="stat-card">
-              <p>Complaints</p>
-              <h2>{stats.complaints || 0}</h2>
+            <div className={dashboardStyles.statCard}>
+              <p className={dashboardStyles.statLabel}>Complaints</p>
+              <h2 className={dashboardStyles.statValue}>{stats.complaints || 0}</h2>
             </div>
 
-            <div className="stat-card">
-              <p>Emergency</p>
-              <h2>{stats.emergency || 0}</h2>
+            <div className={dashboardStyles.statCard}>
+              <p className={dashboardStyles.statLabel}>Emergency</p>
+              <h2 className={dashboardStyles.statValue}>{stats.emergency || 0}</h2>
             </div>
 
           </div>
 
           {/* ========= GRID ========= */}
-          <div className="dashboard-grid">
+          <div className={dashboardStyles.grid}>
 
             {/* LEFT */}
-            <div className="dashboard-left">
+            <div className={dashboardStyles.left}>
 
               {/* RECENT REQUESTS */}
-              <div className="card-box">
-                <h3>Recent Requests</h3>
+              <div className={dashboardStyles.card}>
+                <h3 className={dashboardStyles.cardTitle}>Recent Requests</h3>
 
-                <table className="request-table">
+                <table className={dashboardStyles.table}>
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Service</th>
-                      <th>Duration</th>
-                      <th>Status</th>
+                      <th className={`${dashboardStyles.tableHead} ${dashboardStyles.tableHeader}`}>Name</th>
+                      <th className={`${dashboardStyles.tableHead} ${dashboardStyles.tableHeader}`}>Service</th>
+                      <th className={`${dashboardStyles.tableHead} ${dashboardStyles.tableHeader}`}>Duration</th>
+                      <th className={`${dashboardStyles.tableHead} ${dashboardStyles.tableHeader}`}>Status</th>
                     </tr>
                   </thead>
 
@@ -149,22 +149,9 @@ const ChildDashboard = () => {
                     {recentRequests.length > 0 ? (
                       recentRequests.map((req, i) => (
                         <tr key={i}>
-                          <td>{req.caretakerId?.name || "N/A"}</td>
-                          <td>{req.service}</td>
-                          {/* <td>
-  {req.fromDate && req.toDate ? (
-    <>
-      <span>{req.fromDate.split("T")[0]}</span>
-      <br />
-      <span style={{ fontSize: "12px", color: "gray" }}>
-        to {req.toDate.split("T")[0]}
-      </span>
-    </>
-  ) : (
-    "N/A"
-  )}
-</td> */}
-<td>
+                          <td className={dashboardStyles.tableCell}>{req.caretakerId?.name || "N/A"}</td>
+                          <td className={dashboardStyles.tableCell}>{req.service}</td>
+<td className={dashboardStyles.tableCell}>
   {req.fromDate
     ? new Date(req.fromDate).toLocaleDateString()
     : "N/A"}
@@ -175,8 +162,8 @@ const ChildDashboard = () => {
     ? new Date(req.toDate).toLocaleDateString()
     : "N/A"}
 </td>
-                          <td>
-                            <span className={`status ${req.status || "pending"}`}>
+                          <td className={dashboardStyles.tableCell}>
+                            <span className={statusClass(req.status || "pending")}>
                               {req.status || "Pending"}
                             </span>
                           </td>
@@ -184,7 +171,7 @@ const ChildDashboard = () => {
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="4">No Requests</td>
+                        <td className={dashboardStyles.tableCell} colSpan="4">No Requests</td>
                       </tr>
                     )}
                   </tbody>
@@ -193,29 +180,24 @@ const ChildDashboard = () => {
               </div>
 
               {/* AVAILABLE CARETAKERS */}
-              <div className="card-box">
-                <h3>Available Caretakers</h3>
+              <div className={dashboardStyles.card}>
+                <h3 className={dashboardStyles.cardTitle}>Available Caretakers</h3>
 
 {caretakers.length > 0 ? (
   <>
     {caretakers.slice(0, 5).map((c, i) => (
       <div
         key={i}
-        style={{
-          marginBottom: "12px",
-          padding: "12px",
-          background: "#f5f7f5",
-          borderRadius: "10px"
-        }}
+        className="mb-3 rounded-[10px] bg-[#f5f7f5] p-3"
       >
 
         {/* NAME */}
-        <h4 style={{ margin: "0 0 6px 0" }}>
+        <h4 className="mb-1.5 mt-0 font-semibold">
           {c.name || "No Name"}
         </h4>
 
         {/* BULLET DETAILS */}
-        <ul style={{ paddingLeft: "18px", margin: 0, fontSize: "13px" }}>
+        <ul className="m-0 pl-[18px] text-[13px]">
           <li>Email: {c.email || "N/A"}</li>
           <li>Mobile: {c.phone || "N/A"}</li>
           <li>Aadhar: {c.aadhar || "N/A"}</li>
@@ -227,15 +209,7 @@ const ChildDashboard = () => {
         {/* BUTTON */}
         <button
           onClick={() => handleBook(c)}
-          style={{
-            marginTop: "10px",
-            background: "#5c8d6a",
-            color: "white",
-            border: "none",
-            padding: "6px 12px",
-            borderRadius: "6px",
-            cursor: "pointer"
-          }}
+          className={dashboardStyles.primarySmall}
         >
           Book
         </button>
@@ -244,17 +218,10 @@ const ChildDashboard = () => {
     ))}
 
     {/* VIEW MORE */}
-    <div style={{ textAlign: "center", marginTop: "10px" }}>
+    <div className="mt-2.5 text-center">
       <button
         onClick={() => navigate("/book-service")}
-        style={{
-          background: "#5c8d6a",
-          color: "white",
-          border: "none",
-          padding: "6px 14px",
-          borderRadius: "6px",
-          cursor: "pointer"
-        }}
+        className={dashboardStyles.primarySmall}
       >
         View More
       </button>
@@ -269,14 +236,14 @@ const ChildDashboard = () => {
             </div>
 
             {/* RIGHT */}
-            <div className="dashboard-right">
+            <div className={dashboardStyles.right}>
 
-              <div className="card-box">
-                <h3>Emergency Alerts</h3>
+              <div className={dashboardStyles.card}>
+                <h3 className={dashboardStyles.cardTitle}>Emergency Alerts</h3>
 
                 {alerts.length > 0 ? (
                   alerts.map((a, i) => (
-                    <div key={i} className="alert-item">
+                    <div key={i} className={dashboardStyles.alertItem}>
                       <b>{a.name}</b>
                       <p>{a.message}</p>
                       <span>{a.time}</span>
@@ -287,12 +254,12 @@ const ChildDashboard = () => {
                 )}
               </div>
 
-              <div className="card-box">
-                <h3>Complaints</h3>
+              <div className={dashboardStyles.card}>
+                <h3 className={dashboardStyles.cardTitle}>Complaints</h3>
 
                 {complaints.length > 0 ? (
                   complaints.map((c, i) => (
-                    <div key={i} className="alert-item">
+                    <div key={i} className={dashboardStyles.alertItem}>
                       <b>{c.name}</b>
                       <p>{c.message}</p>
                       <span>{c.time}</span>

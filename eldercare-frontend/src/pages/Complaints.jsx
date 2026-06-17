@@ -1,7 +1,7 @@
-import "./dashboard.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { dashboardStyles } from "../styles";
 
 const Complaints = () => {
 
@@ -76,41 +76,41 @@ const Complaints = () => {
   };
 
   return (
-    <div className="dashboard-layout">
+    <div className={dashboardStyles.layout}>
 
       {/* SIDEBAR */}
-      <div className="sidebar">
-        <h2 className="brand">Nest Life:CURA</h2>
+      <div className={dashboardStyles.sidebar}>
+        <h2 className={dashboardStyles.brand}>Nest Life:CURA</h2>
 
-        <ul>
-          <li onClick={() => navigate("/child-dashboard")}>Dashboard</li>
-          <li onClick={() => navigate("/book-service")}>Book Service</li>
-          <li className="active">Complaints</li>
-          <li onClick={() => navigate("/emergency")}>Emergency</li>
-          <li onClick={() => navigate("/profile")}>Profile</li>
+        <ul className={dashboardStyles.navList}>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/child-dashboard")}>Dashboard</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/book-service")}>Book Service</li>
+          <li className={dashboardStyles.activeNavItem}>Complaints</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/emergency")}>Emergency</li>
+          <li className={dashboardStyles.navItem} onClick={() => navigate("/profile")}>Profile</li>
         </ul>
       </div>
 
       {/* MAIN */}
-      <div className="dashboard-main">
+      <div className={dashboardStyles.main}>
 
-        <h1>Raise Complaint</h1>
+        <h1 className={dashboardStyles.pageTitle}>Raise Complaint</h1>
 
-        <div className="dashboard-grid">
+        <div className={dashboardStyles.grid}>
 
           {/* LEFT */}
-          <div className="dashboard-left">
+          <div className={dashboardStyles.left}>
 
-            <div className="card-box">
-              <h3>Complaint Details</h3>
+            <div className={dashboardStyles.card}>
+              <h3 className={dashboardStyles.cardTitle}>Complaint Details</h3>
 
               {/* TYPE */}
-              <label>Complaint Type</label>
+              <label className={dashboardStyles.label}>Complaint Type</label>
               <select
                 name="type"
                 value={form.type}
                 onChange={handleChange}
-                className="profile-input"
+                className={dashboardStyles.input}
               >
                 <option value="">Select</option>
                 <option value="caretaker">Caretaker</option>
@@ -121,12 +121,12 @@ const Complaints = () => {
               {/* CARETAKER */}
               {form.type === "caretaker" && (
                 <>
-                  <label>Select Caretaker</label>
+                  <label className={dashboardStyles.label}>Select Caretaker</label>
                   <select
                     name="caretakerId"
                     value={form.caretakerId}
                     onChange={handleChange}
-                    className="profile-input"
+                    className={dashboardStyles.input}
                   >
                     <option value="">Select</option>
                     {caretakers.map((c) => (
@@ -139,12 +139,12 @@ const Complaints = () => {
               )}
 
               {/* 🔥 UPDATED LABEL */}
-              <label>How urgent is your problem?</label>
+              <label className={dashboardStyles.label}>How urgent is your problem?</label>
               <select
                 name="severity"
                 value={form.severity}
                 onChange={handleChange}
-                className="profile-input"
+                className={dashboardStyles.input}
               >
                 <option value="">Select</option>
                 <option value="low">Not urgent</option>
@@ -153,36 +153,36 @@ const Complaints = () => {
               </select>
 
               {/* DATE */}
-              <label>Date of Incident</label>
+              <label className={dashboardStyles.label}>Date of Incident</label>
               <input
                 type="date"
                 name="incidentDate"
                 value={form.incidentDate}
                 onChange={handleChange}
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
               {/* SUBJECT */}
-              <label>Subject</label>
+              <label className={dashboardStyles.label}>Subject</label>
               <input
                 name="subject"
                 value={form.subject}
                 onChange={handleChange}
                 placeholder="Enter subject"
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
               {/* MESSAGE */}
-              <label>Description</label>
+              <label className={dashboardStyles.label}>Description</label>
               <textarea
                 name="message"
                 value={form.message}
                 onChange={handleChange}
                 placeholder="Describe your issue"
-                className="profile-input"
+                className={dashboardStyles.input}
               />
 
-              <button onClick={handleSubmit} className="btn-save">
+              <button onClick={handleSubmit} className={dashboardStyles.saveButton}>
                 Submit Complaint
               </button>
             </div>
@@ -190,17 +190,17 @@ const Complaints = () => {
           </div>
 
           {/* RIGHT */}
-          <div className="dashboard-right">
+          <div className={dashboardStyles.right}>
 
-            <div className="card-box">
-              <h3>Instructions</h3>
+            <div className={dashboardStyles.card}>
+              <h3 className={dashboardStyles.cardTitle}>Instructions</h3>
               <p>Select correct complaint type.</p>
               <p>Provide clear and honest details.</p>
               <p>Mention when the issue happened.</p>
             </div>
 
-            <div className="card-box">
-              <h3>Urgency Guide</h3>
+            <div className={dashboardStyles.card}>
+              <h3 className={dashboardStyles.cardTitle}>Urgency Guide</h3>
               <p>Not urgent – Minor issue</p>
               <p>Need help soon – Should be checked</p>
               <p>Immediate help needed – Serious problem</p>
